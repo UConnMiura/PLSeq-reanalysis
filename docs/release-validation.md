@@ -27,3 +27,10 @@ reviewed outputs.
 The clean clone also passed the repository safety audit and contained no FASTQ,
 BAM, genome FASTA, or Apptainer SIF files.
 
+## Public archive
+
+GitHub release `v0.1.1` was archived by Zenodo on 2026-10-27.
+
+- Version DOI: `10.5281/zenodo.23712456`
+- Concept DOI: `10.5281/zenodo.23712455`
+- Record: <https://zenodo.org/records/23712456>

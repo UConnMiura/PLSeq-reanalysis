@@ -1,6 +1,7 @@
 # Reproducible reanalysis of targeted long-read PL-Seq data
 
 [![Repository safety](https://github.com/UConnMiura/PLSeq-reanalysis/actions/workflows/repository-safety.yml/badge.svg)](https://github.com/UConnMiura/PLSeq-reanalysis/actions/workflows/repository-safety.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23712455.svg)](https://doi.org/10.5281/zenodo.23712455)
 
 This repository contains the code, compact analysis inputs, statistical outputs,
 figure sources, and Quarto manuscript for a reproducible reanalysis of the
@@ -94,8 +95,10 @@ release if needed.
 
 ## Citation
 
-Initial citation metadata is provided in `CITATION.cff`. The public repository
-URL and Zenodo DOI will be added when the first versioned release is archived.
+Citation metadata is provided in `CITATION.cff`. Release `v0.1.1` is archived
+as [doi:10.5281/zenodo.23712456](https://doi.org/10.5281/zenodo.23712456).
+For references intended to resolve to the latest archived version, use the
+concept DOI [doi:10.5281/zenodo.23712455](https://doi.org/10.5281/zenodo.23712455).
 
 ## License
 

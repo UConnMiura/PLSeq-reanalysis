@@ -10,7 +10,11 @@ version: 0.1.1
 date-released: 2026-10-27
 repository-code: "https://github.com/UConnMiura/PLSeq-reanalysis"
 url: "https://github.com/UConnMiura/PLSeq-reanalysis"
+doi: "10.5281/zenodo.23712456"
 identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23712455"
+    description: "Concept DOI resolving to the latest archived repository release"
   - type: other
     value: "PMID:37679364"
     description: "Original PL-Seq study reanalyzed by this repository"
