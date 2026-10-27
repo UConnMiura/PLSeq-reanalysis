@@ -2,6 +2,10 @@
 
 This directory contains the reproducible Quarto manuscript draft.
 
+The rendered HTML manuscript is published automatically at
+<https://uconnmiura.github.io/PLSeq-reanalysis/>. GitHub Actions rebuilds the
+site whenever manuscript sources or publication figures change on `main`.
+
 The draft currently defines five main figures:
 
 1. workflow, analytical improvements, and project timing;

@@ -3,6 +3,10 @@
 [![Repository safety](https://github.com/UConnMiura/PLSeq-reanalysis/actions/workflows/repository-safety.yml/badge.svg)](https://github.com/UConnMiura/PLSeq-reanalysis/actions/workflows/repository-safety.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23712455.svg)](https://doi.org/10.5281/zenodo.23712455)
 
+**[Read the formatted manuscript](https://uconnmiura.github.io/PLSeq-reanalysis/)** ·
+**[Browse the main figures](https://github.com/UConnMiura/PLSeq-reanalysis/tree/main/figures/main)** ·
+**[View the Zenodo archive](https://doi.org/10.5281/zenodo.23712455)**
+
 This repository contains the data products, analysis code, publication figures,
 and manuscript source for a reproducible reanalysis of the Pull-a-Long-Seq
 study associated with [PMID 37679364](https://pubmed.ncbi.nlm.nih.gov/37679364/).
