@@ -94,3 +94,9 @@ release if needed.
 
 Initial citation metadata is provided in `CITATION.cff`. The public repository
 URL and Zenodo DOI will be added when the first versioned release is archived.
+
+## License
+
+The analysis software and repository documentation are released under the MIT
+License. Third-party data, annotations, publications, and software retain their
+original licenses and terms of use.
