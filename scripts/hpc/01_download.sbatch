@@ -9,11 +9,11 @@
 #SBATCH --time=24:00:00
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=miura@uchc.edu
-#SBATCH --output=/home/FCAM/pmiura/eofiles/plseq_download.%A_%a.out
-#SBATCH --error=/home/FCAM/pmiura/eofiles/plseq_download.%A_%a.err
+#SBATCH --output=logs/plseq_download.%A_%a.out
+#SBATCH --error=logs/plseq_download.%A_%a.err
 
 set -euo pipefail
-: "${PROJECT:?Set PROJECT to the Mantis project directory}"
+PROJECT="${PLSEQ_HPC_PROJECT:?Set PLSEQ_HPC_PROJECT to the Mantis project directory}"
 
 manifest="$PROJECT/metadata/run_manifest.tsv"
 line=$((SLURM_ARRAY_TASK_ID + 2))

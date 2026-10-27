@@ -9,13 +9,14 @@ import tomllib
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from project_paths import repo_root
 
-ROOT = Path("/Users/pedromiura/Documents/codex/PMID37679364_reanalysis")
-STYLE = ROOT / "figure_system/nature_communications.toml"
-CONFIG = ROOT / "metadata/figure3e_pileup_catalog_manifest.tsv"
-COUNTS = ROOT / "hpc_results/figure3e/figure3e_reconstructed_counts.tsv"
-STATS = ROOT / "hpc_results/figure3e/figure3e_FASTQ_statistics.tsv"
-OUT = ROOT / "figures/figure3e_replicate_standalone"
+ROOT = repo_root()
+STYLE = ROOT / "config/nature_communications.toml"
+CONFIG = ROOT / "config/figure3e_pileup_catalog_manifest.tsv"
+COUNTS = ROOT / "data/derived/figure3e_reconstructed_counts.tsv"
+STATS = ROOT / "data/derived/figure3e_FASTQ_statistics.tsv"
+OUT = ROOT / "figures/main"
 
 
 def load_tsv(path):

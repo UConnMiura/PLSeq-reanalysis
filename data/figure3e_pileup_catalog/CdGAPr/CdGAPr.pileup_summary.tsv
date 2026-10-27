@@ -1,0 +1,11 @@
+run	replicate	gene	fraction	primary	included	skipped	unresolved	boundary_fail	informative	PSI	expected_included	expected_informative	expected_PSI	count_match
+SRR16318559	1	CdGAPr	long	5	3	2	0	0	5	0.6	3	5	0.6	True
+SRR16318559	1	CdGAPr	short	50	7	43	0	0	50	0.14	7	50	0.14	True
+SRR16318558	2	CdGAPr	long	7	1	6	0	0	7	0.14285714285714285	1	7	0.14285714285714285	True
+SRR16318558	2	CdGAPr	short	23	4	18	0	1	22	0.18181818181818182	4	22	0.18181818181818182	True
+SRR16318557	3	CdGAPr	long	2	0	0	0	2	0		0	0		True
+SRR16318557	3	CdGAPr	short	19	0	19	0	0	19	0.0	0	19	0.0	True
+SRR16318556	4	CdGAPr	long	2	0	2	0	0	2	0.0	0	2	0.0	True
+SRR16318556	4	CdGAPr	short	21	1	19	0	1	20	0.05	1	20	0.05	True
+SRR16318555	5	CdGAPr	long	2	0	1	0	1	1	0.0	0	1	0.0	True
+SRR16318555	5	CdGAPr	short	23	1	22	0	0	23	0.043478260869565216	1	23	0.043478260869565216	True

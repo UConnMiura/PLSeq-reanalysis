@@ -6,13 +6,13 @@
 #SBATCH --mem=12G
 #SBATCH --time=04:00:00
 #SBATCH --array=0-27%4
-#SBATCH --output=/projects/Enterica/Pedro/paper/plseq/logs/pileup_catalog_%A_%a.out
-#SBATCH --error=/projects/Enterica/Pedro/paper/plseq/logs/pileup_catalog_%A_%a.err
+#SBATCH --output=logs/pileup_catalog_%A_%a.out
+#SBATCH --error=logs/pileup_catalog_%A_%a.err
 
 set -euo pipefail
 
-PROJECT=/projects/Enterica/Pedro/paper/plseq
-IMAGE="$PROJECT/software/pullalong-core.sif"
+PROJECT="${PLSEQ_HPC_PROJECT:?Set PLSEQ_HPC_PROJECT to the Mantis project directory}"
+IMAGE="${PLSEQ_APPTAINER_IMAGE:-$PROJECT/software/pullalong-core.sif}"
 CATALOG="$PROJECT/metadata/figure3e_pileup_catalog_manifest.tsv"
 SAMPLE_MAP="$PROJECT/metadata/rebuilt_v217/available_fastq_sample_map.tsv"
 PREP="$PROJECT/scripts/prepare_figure4_pileup.py"

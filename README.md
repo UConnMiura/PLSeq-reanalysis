@@ -25,6 +25,34 @@ The principal layers are:
 4. `scripts/local/`: statistical analyses and deterministic figure generation.
 5. `manuscript/`: the Quarto manuscript, references, and PDF build support.
 
+## Quick start
+
+Create the local software environment, validate the repository, and regenerate
+the figures that use the included compact inputs:
+
+```bash
+conda env create -f environment/environment.yml
+conda activate plseq-reanalysis
+bash scripts/install_git_hooks.sh
+make check
+make figures-core
+make manuscript
+```
+
+Every local Python script discovers the repository from its own file location.
+An alternate checkout root can be supplied through `PLSEQ_ROOT`. Analyses that
+read extracted source-paper supplementary tables additionally require
+`PLSEQ_SUPP_TABLE_DIR`.
+
+On Mantis, submit jobs after defining the project and pinned container:
+
+```bash
+export PLSEQ_HPC_PROJECT=/path/to/hpc/project
+export PLSEQ_APPTAINER_IMAGE="$PLSEQ_HPC_PROJECT/software/pullalong-core.sif"
+mkdir -p logs
+sbatch scripts/hpc/02_align.sbatch
+```
+
 ## Safety against accidental large-file commits
 
 The `.gitignore` blocks sequencing data, alignments, genome FASTA files,
@@ -65,4 +93,3 @@ release if needed.
 Citation metadata will be finalized in `CITATION.cff` when the manuscript title
 and public repository URL are fixed. A versioned GitHub release should be
 archived through Zenodo to obtain a permanent DOI.
-

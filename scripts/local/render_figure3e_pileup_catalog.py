@@ -10,17 +10,18 @@ import os
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyArrowPatch, Rectangle
 from PIL import Image, ImageDraw
+from project_paths import repo_root
 
-ROOT = Path("/Users/pedromiura/Documents/codex/PMID37679364_reanalysis")
+ROOT = repo_root()
 DATA = ROOT / "data/figure3e_pileup_catalog"
-CONFIG = ROOT / "metadata/figure3e_pileup_catalog_manifest.tsv"
-STATS = ROOT / "hpc_results/figure3e/figure3e_FASTQ_statistics.tsv"
-OUT = ROOT / "figures/figure3e_pileup_catalog"
-ATLAS_MODELS = ROOT / "figures/figure3e_loci/atlas/figure3e_locus_atlas_manifest.tsv"
-FLY_BED = ROOT / "reference/ref/Fly_dm6.bed"
+CONFIG = ROOT / "config/figure3e_pileup_catalog_manifest.tsv"
+STATS = ROOT / "data/derived/figure3e_FASTQ_statistics.tsv"
+OUT = ROOT / "figures/supplementary/figure3e_pileup_catalog"
+ATLAS_MODELS = ROOT / "config/figure3e_locus_atlas_manifest.tsv"
+FLY_BED = ROOT / "data/source/Fly_dm6.bed"
 USE_TRANSCRIPT_MODELS = os.environ.get("PLSEQ_TRANSCRIPT_MODELS", "0") == "1"
 if USE_TRANSCRIPT_MODELS:
-    OUT = ROOT / "figures/figure3e_pileup_catalog_representative_transcripts"
+    OUT = ROOT / "figures/supplementary/figure3e_pileup_catalog_representative_transcripts"
 
 COL_LONG = "#5B4B9A"
 COL_SHORT = "#D18F2E"

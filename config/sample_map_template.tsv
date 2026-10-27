@@ -1,0 +1,2 @@
+run_accession	organism	sample	condition	tissue	probe_set	replicate	assay	expected_panel	status
+SRR16474418	Drosophila melanogaster	Khc-73 universal 3UTR	unknown	embryo	NA	unknown	PCR-Nanopore	Supplementary Figure 3	pilot_nearest_match_requires_confirmation

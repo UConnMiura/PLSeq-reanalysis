@@ -1,9 +1,13 @@
 options(stringsAsFactors = FALSE, scipen = 999)
 
-root <- "/Users/pedromiura/Documents/codex/PMID37679364_reanalysis"
-src <- "/Users/pedromiura/Documents/codex/PMID37679364_agent/dist/pmid-37679364-agent/skill/pmid-37679364-paper/assets/supp_table"
-res <- file.path(root, "results")
-fig <- file.path(root, "figures")
+full_args <- commandArgs(trailingOnly = FALSE)
+script_file <- sub("^--file=", "", grep("^--file=", full_args, value = TRUE)[1])
+default_root <- normalizePath(file.path(dirname(script_file), "../.."), mustWork = TRUE)
+root <- Sys.getenv("PLSEQ_ROOT", default_root)
+src <- Sys.getenv("PLSEQ_SUPP_TABLE_DIR")
+if (!nzchar(src)) stop("Set PLSEQ_SUPP_TABLE_DIR to the extracted supplementary-table directory")
+res <- file.path(root, "data", "derived")
+fig <- file.path(root, "figures", "supplementary", "phase1")
 dir.create(res, recursive = TRUE, showWarnings = FALSE)
 dir.create(fig, recursive = TRUE, showWarnings = FALSE)
 

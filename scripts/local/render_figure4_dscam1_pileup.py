@@ -13,11 +13,11 @@ import re
 
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyArrowPatch, Rectangle
+from project_paths import repo_root
 
-
-ROOT = Path("/Users/pedromiura/Documents/codex/PMID37679364_reanalysis")
+ROOT = repo_root()
 DATA = ROOT / "data/figure4_pileup/Dscam1"
-OUT = ROOT / "figures/figure4_pileup"
+OUT = ROOT / "figures/supplementary/figure4_pileup"
 SUMMARY = DATA / "Dscam1.pileup_summary.tsv"
 
 CHROM = "chr2R"

@@ -9,16 +9,17 @@ import tomllib
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyArrowPatch, Rectangle
+from project_paths import repo_root
 
-ROOT = Path("/Users/pedromiura/Documents/codex/PMID37679364_reanalysis")
-STYLE_PATH = ROOT / "figure_system/nature_communications.toml"
-CONFIG = ROOT / "metadata/figure3e_pileup_catalog_manifest.tsv"
-STATS = ROOT / "hpc_results/figure3e/figure3e_FASTQ_statistics.tsv"
-COUNTS = ROOT / "hpc_results/figure3e/figure3e_reconstructed_counts.tsv"
+ROOT = repo_root()
+STYLE_PATH = ROOT / "config/nature_communications.toml"
+CONFIG = ROOT / "config/figure3e_pileup_catalog_manifest.tsv"
+STATS = ROOT / "data/derived/figure3e_FASTQ_statistics.tsv"
+COUNTS = ROOT / "data/derived/figure3e_reconstructed_counts.tsv"
 DATA = ROOT / "data/figure3e_pileup_catalog"
-ATLAS = ROOT / "figures/figure3e_loci/atlas/figure3e_locus_atlas_manifest.tsv"
-FLY_BED = ROOT / "reference/ref/Fly_dm6.bed"
-OUT = ROOT / "figures/nature_communications_pilot"
+ATLAS = ROOT / "config/figure3e_locus_atlas_manifest.tsv"
+FLY_BED = ROOT / "data/source/Fly_dm6.bed"
+OUT = ROOT / "figures/main"
 
 
 def load_tsv(path):

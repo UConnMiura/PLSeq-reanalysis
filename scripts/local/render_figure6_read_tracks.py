@@ -9,15 +9,15 @@ import tomllib
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyArrowPatch, Rectangle
+from project_paths import repo_root
 
-
-ROOT = Path("/Users/pedromiura/Documents/codex/PMID37679364_reanalysis")
+ROOT = repo_root()
 DATA = ROOT / "data/pileup_inputs/figure6"
-CONFIG = ROOT / "metadata/figure3e_pileup_catalog_manifest.tsv"
-ATLAS = ROOT / "figures/figure3e_loci/atlas/figure3e_locus_atlas_manifest.tsv"
-FLY_BED = ROOT / "reference/ref/Fly_dm6.bed"
-STYLE = ROOT / "figure_system/nature_communications.toml"
-OUT = ROOT / "figures/figure5_read_tracks"
+CONFIG = ROOT / "config/figure3e_pileup_catalog_manifest.tsv"
+ATLAS = ROOT / "config/figure3e_locus_atlas_manifest.tsv"
+FLY_BED = ROOT / "data/source/Fly_dm6.bed"
+STYLE = ROOT / "config/nature_communications.toml"
+OUT = ROOT / "figures/main"
 
 GENES = [("Khc-73", "15"), ("Dscam1", "23")]
 CONDITIONS = [("control", "Control"), ("elav5", r"$elav^{5}$")]

@@ -1,9 +1,12 @@
 options(stringsAsFactors = FALSE, scipen = 999)
 
 args <- commandArgs(trailingOnly = TRUE)
-project <- if (length(args)) args[1] else "/Users/pedromiura/Documents/codex/PMID37679364_reanalysis"
-input_dir <- file.path(project, "hpc_results", "figure3e")
-output_dir <- file.path(project, "figures", "figure3e_redesign")
+full_args <- commandArgs(trailingOnly = FALSE)
+script_file <- sub("^--file=", "", grep("^--file=", full_args, value = TRUE)[1])
+default_root <- normalizePath(file.path(dirname(script_file), "../.."), mustWork = TRUE)
+project <- if (length(args)) args[1] else Sys.getenv("PLSEQ_ROOT", default_root)
+input_dir <- file.path(project, "data", "derived")
+output_dir <- file.path(project, "figures", "supplementary", "figure3e_redesign")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 counts <- read.delim(file.path(input_dir, "figure3e_reconstructed_counts.tsv"),

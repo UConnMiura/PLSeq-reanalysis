@@ -1,0 +1,9 @@
+run	replicate	gene	fraction	primary	included	skipped	unresolved	boundary_fail	informative	PSI	expected_included	expected_informative	expected_PSI	count_match
+SRR16318553	1	Camta	long	27	4	23	0	0	27	0.14814814814814814	4	27	0.14814814814814814	True
+SRR16318553	1	Camta	short	191	0	191	0	0	191	0.0	0	191	0.0	True
+SRR16318552	2	Camta	long	115	28	79	2	6	107	0.2616822429906542	31	111	0.27927927927927926	False
+SRR16318552	2	Camta	short	255	0	255	0	0	255	0.0	0	256	0.0	False
+SRR16318565	3	Camta	long	133	9	121	0	3	130	0.06923076923076923	9	130	0.06923076923076923	True
+SRR16318565	3	Camta	short	553	0	553	0	0	553	0.0	0	553	0.0	True
+SRR16318560	4	Camta	long	35	9	24	0	2	33	0.2727272727272727	9	33	0.2727272727272727	True
+SRR16318560	4	Camta	short	927	0	927	0	0	927	0.0	0	928	0.0	False

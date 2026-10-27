@@ -1,0 +1,11 @@
+run	replicate	gene	fraction	primary	included	skipped	unresolved	boundary_fail	informative	PSI	expected_included	expected_informative	expected_PSI	count_match
+SRR16318559	1	Vav	long	42	42	0	0	0	42	1.0	42	42	1.0	True
+SRR16318559	1	Vav	short	35	29	6	0	0	35	0.8285714285714286	29	35	0.8285714285714286	True
+SRR16318558	2	Vav	long	44	43	1	0	0	44	0.9772727272727273	43	44	0.9772727272727273	True
+SRR16318558	2	Vav	short	44	44	0	0	0	44	1.0	44	44	1.0	True
+SRR16318557	3	Vav	long	17	17	0	0	0	17	1.0	17	17	1.0	True
+SRR16318557	3	Vav	short	23	23	0	0	0	23	1.0	23	23	1.0	True
+SRR16318556	4	Vav	long	10	10	0	0	0	10	1.0	10	10	1.0	True
+SRR16318556	4	Vav	short	1	1	0	0	0	1	1.0	1	1	1.0	True
+SRR16318555	5	Vav	long	30	29	1	0	0	30	0.9666666666666667	29	30	0.9666666666666667	True
+SRR16318555	5	Vav	short	78	77	0	1	0	77	1.0	78	78	1.0	False

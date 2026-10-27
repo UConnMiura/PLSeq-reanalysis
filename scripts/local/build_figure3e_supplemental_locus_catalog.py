@@ -29,7 +29,7 @@ base.MODELS["CASK"] = [("Short | CE included", "FBtr0301328")]
 
 
 ROOT = base.ROOT
-OUT = ROOT / "figures/figure3e_supplemental_locus_catalog"
+OUT = ROOT / "figures/supplementary/figure3e_supplemental_locus_catalog"
 PAGE_PNG = OUT / "page_png"
 INDIVIDUAL_PDF = OUT / "individual_pdf"
 INDIVIDUAL_PNG = OUT / "individual_png"

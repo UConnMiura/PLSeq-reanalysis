@@ -12,8 +12,8 @@ sys.path.insert(0, str(HERE))
 import render_figure4_dscam1_pileup as base
 
 ROOT = base.ROOT
-BED12 = ROOT / "reference/ref/Fly_dm6.bed"
-OUT = ROOT / "figures/figure4_pileup"
+BED12 = ROOT / "data/source/Fly_dm6.bed"
+OUT = ROOT / "figures/supplementary/figure4_pileup"
 
 MODELS = [
     ("FBtr0334801", "Long 3′UTR · CE23 skipped"),

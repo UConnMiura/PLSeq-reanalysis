@@ -1,0 +1,42 @@
+[journal]
+name = "Nature Communications"
+guidance_checked = "2026-10-26"
+official_guidance = "https://www.nature.com/ncomms/submit/how-to-submit"
+
+[canvas]
+width_mm = 180.0
+height_mm = 270.0
+background = "#FFFFFF"
+outer_margin_mm = 4.0
+panel_gap_mm = 2.5
+
+[typography]
+family = "Arial"
+fallback = "Helvetica, DejaVu Sans"
+panel_label_pt = 14.0
+title_pt = 7.0
+body_pt = 6.0
+small_pt = 5.0
+minimum_pt = 5.0
+maximum_pt = 7.0
+
+[lines]
+minimum_pt = 1.0
+axis_pt = 1.0
+data_pt = 1.0
+
+[colors]
+long_utr = "#5B4B9A"
+short_utr = "#D18F2E"
+significant = "#C83E4D"
+nonsignificant = "#A6A6A6"
+reads = "#8F8F8F"
+annotation = "#D0D0D0"
+text = "#222222"
+
+[export]
+vector = "pdf"
+preview = "png"
+preview_dpi = 300
+editable_text = true
+white_background = true

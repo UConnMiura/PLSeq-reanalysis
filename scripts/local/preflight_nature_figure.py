@@ -5,11 +5,12 @@ from pathlib import Path
 import subprocess
 import shutil
 import tomllib
+from project_paths import repo_root
 
-ROOT = Path("/Users/pedromiura/Documents/codex/PMID37679364_reanalysis")
-STYLE = ROOT / "figure_system/nature_communications.toml"
-FIG = ROOT / "figures/nature_communications_pilot/Figure3E_Nature_Communications_pilot.pdf"
-REPORT = ROOT / "figures/nature_communications_pilot/PREFLIGHT.md"
+ROOT = repo_root()
+STYLE = ROOT / "config/nature_communications.toml"
+FIG = ROOT / "figures/main/Figure3E_Nature_Communications_pilot.pdf"
+REPORT = ROOT / "figures/main/Figure3E_Nature_Communications_pilot_PREFLIGHT.md"
 
 with STYLE.open("rb") as fh:
     s = tomllib.load(fh)

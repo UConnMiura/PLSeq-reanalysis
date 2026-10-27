@@ -1,10 +1,12 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { SpreadsheetFile, Workbook } from "@oai/artifact-tool";
 
-const root = "/Users/pedromiura/Documents/codex/PMID37679364_reanalysis";
-const results = path.join(root, "results");
-const outDir = path.join(root, "outputs", "01a16de2-e9f2-7ae0-8ed7-812f72d5610e");
+const here = path.dirname(fileURLToPath(import.meta.url));
+const root = process.env.PLSEQ_ROOT || path.resolve(here, "../..");
+const results = path.join(root, "data", "derived");
+const outDir = path.join(root, "outputs", "workbook");
 const previewDir = path.join(outDir, "previews");
 await fs.mkdir(previewDir, { recursive: true });
 

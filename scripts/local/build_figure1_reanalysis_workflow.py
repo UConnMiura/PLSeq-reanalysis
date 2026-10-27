@@ -5,9 +5,10 @@ from pathlib import Path
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
+from project_paths import repo_root
 
-ROOT = Path("/Users/pedromiura/Documents/codex/PMID37679364_reanalysis")
-OUT = ROOT / "figures/manuscript_figure1_workflow"
+ROOT = repo_root()
+OUT = ROOT / "figures/main"
 
 INK = "#242424"
 MUTED = "#676767"

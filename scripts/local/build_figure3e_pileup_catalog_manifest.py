@@ -4,12 +4,13 @@
 from pathlib import Path
 import csv
 from collections import defaultdict
+from project_paths import repo_root
 
-ROOT = Path("/Users/pedromiura/Documents/codex/PMID37679364_reanalysis")
-REF = ROOT / "reference/ref"
-ATLAS = ROOT / "figures/figure3e_loci/atlas/figure3e_locus_atlas_manifest.tsv"
-COUNTS = ROOT / "hpc_results/figure3e/figure3e_reconstructed_counts.tsv"
-OUT = ROOT / "metadata/figure3e_pileup_catalog_manifest.tsv"
+ROOT = repo_root()
+REF = ROOT / "data/source"
+ATLAS = ROOT / "config/figure3e_locus_atlas_manifest.tsv"
+COUNTS = ROOT / "data/derived/figure3e_reconstructed_counts.tsv"
+OUT = ROOT / "config/figure3e_pileup_catalog_manifest.tsv"
 
 
 def bed(path):

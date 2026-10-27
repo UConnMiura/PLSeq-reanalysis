@@ -35,6 +35,7 @@ FORBIDDEN_PARTS = {
     "scratch",
     "work",
 }
+IGNORED_WORKING_PARTS = {".git", ".quarto", "__pycache__", "node_modules"}
 MAX_BYTES = 25 * 1024 * 1024
 
 
@@ -50,7 +51,11 @@ def staged_paths(root: Path) -> list[Path]:
 
 
 def working_paths(root: Path) -> list[Path]:
-    return [path for path in root.rglob("*") if path.is_file() and ".git" not in path.parts]
+    return [
+        path
+        for path in root.rglob("*")
+        if path.is_file() and not IGNORED_WORKING_PARTS.intersection(path.relative_to(root).parts)
+    ]
 
 
 def violations(paths: list[Path], root: Path) -> list[str]:
