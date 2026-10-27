@@ -2,26 +2,22 @@
 title: "Reanalysis of targeted long-read RNA sequencing improves statistical inference, read-level visualization, and reuse"
 author:
   - name: Pedro Miura
-    affiliations: [uconn-health, isg]
+    email: miura@uchc.edu
+    affiliations:
+      - name: Department of Genetics and Genome Sciences, University of Connecticut School of Medicine
+        city: Farmington
+        region: CT
+        country: USA
+      - name: Institute for System Genomics, University of Connecticut
+        city: Storrs
+        region: CT
+        country: USA
     corresponding: true
-affiliations:
-  - id: uconn-health
-    name: Department of Genetics and Genome Sciences, University of Connecticut School of Medicine
-    city: Farmington
-    region: CT
-    country: USA
-  - id: isg
-    name: Institute for System Genomics, University of Connecticut
-    city: Storrs
-    region: CT
-    country: USA
 bibliography: references.bib
 csl: nature.csl
 link-citations: true
 filters:
   - figure-box.lua
-include-in-header:
-  - reader-preamble.tex
 ---
 
 ## Abstract
@@ -187,4 +183,4 @@ The author declares no competing interests.
 
 ## Supplementary Information
 
-Supplementary Figure 1 presents the read-level locus catalog for all 28 cassette-exon events. Additional supplements will report per-stage QC, count reconciliation, sensitivity analyses, the complete event-level statistical tables, and annotation/provenance audits.
+[Supplementary Figure 1](../figures/supplementary/Figure3E_supplemental_locus_catalog_all_28.pdf) presents the read-level locus catalog for all 28 cassette-exon events. Additional supplements will report per-stage QC, count reconciliation, sensitivity analyses, the complete event-level statistical tables, and annotation/provenance audits.

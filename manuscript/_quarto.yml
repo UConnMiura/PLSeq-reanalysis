@@ -9,13 +9,15 @@ format:
   html:
     toc: true
     number-sections: true
+    format-links: false
   docx: default
   pdf:
     documentclass: article
     keep-tex: true
+    include-in-header:
+      - reader-preamble.tex
 
 execute:
   echo: false
   warning: false
   freeze: auto
-
