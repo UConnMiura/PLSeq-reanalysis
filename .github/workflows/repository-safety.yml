@@ -14,11 +14,12 @@ jobs:
           python-version: "3.12"
       - name: Check repository contents
         run: python tests/check_repository_files.py
+      - name: Verify reviewed figure checksums
+        run: python tests/verify_figure_checksums.py
       - name: Check Python syntax
-        run: python -m py_compile scripts/local/*.py tests/check_repository_files.py
+        run: python -m py_compile scripts/local/*.py tests/*.py
       - name: Check shell syntax
         run: |
           for script in scripts/hpc/*.sbatch scripts/install_git_hooks.sh manuscript/build_reader_pdf.sh; do
             bash -n "$script"
           done
-
