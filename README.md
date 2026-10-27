@@ -74,11 +74,13 @@ bash scripts/install_git_hooks.sh
 
 ## Current reproducibility status
 
-This is the clean-room repository scaffold. Compact evidence tables, current
-figure outputs, manuscript sources, and the scripts used during the analysis
-have been collected. The next development step is to remove remaining
-machine-specific absolute paths and connect the stages through one documented
-configuration-driven build.
+The clean repository contains compact evidence tables, sampled read-level
+plotting inputs, current figure outputs, manuscript sources, and the scripts
+used during the analysis. Machine-specific paths have been removed from the
+executable sources. Core figures and the manuscript PDF have been rebuilt from
+this checkout. The remaining release work is to recover or archive the exact
+Apptainer image, select a software license, validate the environment from a
+fresh installation, and assign the public GitHub and Zenodo identifiers.
 
 ## Data and software availability
 
@@ -90,6 +92,5 @@ release if needed.
 
 ## Citation
 
-Citation metadata will be finalized in `CITATION.cff` when the manuscript title
-and public repository URL are fixed. A versioned GitHub release should be
-archived through Zenodo to obtain a permanent DOI.
+Initial citation metadata is provided in `CITATION.cff`. The public repository
+URL and Zenodo DOI will be added when the first versioned release is archived.

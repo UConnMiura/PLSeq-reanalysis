@@ -1,0 +1,24 @@
+name: Repository safety
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  reject-large-or-sequencing-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check repository contents
+        run: python tests/check_repository_files.py
+      - name: Check Python syntax
+        run: python -m py_compile scripts/local/*.py tests/check_repository_files.py
+      - name: Check shell syntax
+        run: |
+          for script in scripts/hpc/*.sbatch scripts/install_git_hooks.sh manuscript/build_reader_pdf.sh; do
+            bash -n "$script"
+          done
+

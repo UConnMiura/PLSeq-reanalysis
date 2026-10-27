@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this reanalysis workflow, please cite this repository and the associated manuscript."
+title: "Reanalysis of targeted long-read RNA sequencing improves statistical inference, read-level visualization, and reuse"
+type: software
+authors:
+  - family-names: Miura
+    given-names: Pedro
+    affiliation: "Department of Genetics and Genome Sciences, University of Connecticut School of Medicine; Institute for System Genomics, University of Connecticut"
+version: 0.1.0
+date-released: 2026-10-27
+identifiers:
+  - type: other
+    value: "PMID:37679364"
+    description: "Original PL-Seq study reanalyzed by this repository"
+keywords:
+  - long-read RNA sequencing
+  - Oxford Nanopore sequencing
+  - alternative splicing
+  - alternative polyadenylation
+  - reproducible research
+license: NOASSERTION
+
