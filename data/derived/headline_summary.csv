@@ -1,0 +1,8 @@
+"metric","value"
+"PSI arithmetic mismatches",0
+"Figure 3 raw p<0.05",36
+"Figure 3 BH FDR<0.05",32
+"Figure 6 isoform tests raw p<0.05",23
+"Figure 6 isoform tests BH FDR<0.05",19
+"Figure 6 abs-delta raw p<0.05",10
+"Figure 6 abs-delta BH FDR<0.05",10

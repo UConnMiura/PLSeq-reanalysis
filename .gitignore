@@ -1,0 +1,78 @@
+# Sequencing data and alignments: never commit these files.
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.bai
+*.cram
+*.crai
+*.sam
+
+# Large reference sequences and indexes.
+*.fa
+*.fa.gz
+*.fasta
+*.fasta.gz
+*.fna
+*.2bit
+*.mmi
+*.fai
+*.gzi
+*.dict
+
+# Containers and archives. Commit the definition and checksum instead.
+*.sif
+*.img
+*.simg
+*.tar
+*.tar.gz
+*.zip
+
+# Generated workflow products.
+work/
+scratch/
+raw/
+logs/
+output/
+outputs/
+tmp/
+temp/
+cache/
+*.log
+*.out
+*.err
+
+# Quarto/LaTeX build products.
+manuscript/_output/
+manuscript/.quarto/
+manuscript/output/
+manuscript/tmp/
+manuscript/*.aux
+manuscript/*.bbl
+manuscript/*.bcf
+manuscript/*.blg
+manuscript/*.fls
+manuscript/*.fdb_latexmk
+manuscript/*.run.xml
+manuscript/manuscript.tex
+
+# Language and editor caches.
+__pycache__/
+*.py[cod]
+.Rhistory
+.RData
+.Rproj.user/
+.venv/
+venv/
+node_modules/
+.DS_Store
+.idea/
+.vscode/
+
+# Local configuration and credentials.
+config/paths.yml
+.env
+*.pem
+*.key
+

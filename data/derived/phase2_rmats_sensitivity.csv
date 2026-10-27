@@ -1,0 +1,41 @@
+"contrast","fdr","abs_dpsi_cutoff","events","genes"
+"Embryo 2-4h vs 16-18h",0.01,0.1,135,56
+"Embryo 2-4h vs 16-18h",0.01,0.2,135,56
+"Embryo 2-4h vs 16-18h",0.01,0.3,90,40
+"Embryo 2-4h vs 16-18h",0.01,0.4,66,32
+"Embryo 2-4h vs 16-18h",0.05,0.1,141,58
+"Embryo 2-4h vs 16-18h",0.05,0.2,141,58
+"Embryo 2-4h vs 16-18h",0.05,0.3,91,40
+"Embryo 2-4h vs 16-18h",0.05,0.4,66,32
+"Ovary vs head",0.01,0.1,183,58
+"Ovary vs head",0.01,0.2,183,58
+"Ovary vs head",0.01,0.3,148,53
+"Ovary vs head",0.01,0.4,119,46
+"Ovary vs head",0.05,0.1,190,62
+"Ovary vs head",0.05,0.2,190,62
+"Ovary vs head",0.05,0.3,151,55
+"Ovary vs head",0.05,0.4,120,47
+"CS vs elav,fne",0.01,0.1,107,28
+"CS vs elav,fne",0.01,0.2,107,28
+"CS vs elav,fne",0.01,0.3,81,24
+"CS vs elav,fne",0.01,0.4,65,21
+"CS vs elav,fne",0.05,0.1,109,29
+"CS vs elav,fne",0.05,0.2,109,29
+"CS vs elav,fne",0.05,0.3,81,24
+"CS vs elav,fne",0.05,0.4,65,21
+"CS vs elav",0.01,0.1,47,15
+"CS vs elav",0.01,0.2,47,15
+"CS vs elav",0.01,0.3,27,8
+"CS vs elav",0.01,0.4,16,5
+"CS vs elav",0.05,0.1,62,16
+"CS vs elav",0.05,0.2,62,16
+"CS vs elav",0.05,0.3,32,9
+"CS vs elav",0.05,0.4,17,5
+"mES DIV-8 vs DIV7",0.01,0.1,178,123
+"mES DIV-8 vs DIV7",0.01,0.2,178,123
+"mES DIV-8 vs DIV7",0.01,0.3,133,92
+"mES DIV-8 vs DIV7",0.01,0.4,98,70
+"mES DIV-8 vs DIV7",0.05,0.1,192,131
+"mES DIV-8 vs DIV7",0.05,0.2,192,131
+"mES DIV-8 vs DIV7",0.05,0.3,139,96
+"mES DIV-8 vs DIV7",0.05,0.4,99,70

@@ -1,0 +1,6 @@
+"contrast","qapa_rows","qapa_all_rows_meet_published","qapa_min_padj","qapa_min_abs_log2_fc","rmats_rows","rmats_all_rows_meet_published","rmats_min_fdr","rmats_min_abs_dpsi"
+"Embryo 2-4h vs 16-18h",252,TRUE,0.000107915132707099,1.01527439982237,141,TRUE,0,0.201
+"Ovary vs head",290,TRUE,0.0000229378023339618,1.02453305339465,190,TRUE,0,0.203
+"CS vs elav,fne",131,TRUE,0.0000566829057715957,1.00217529966583,109,TRUE,0,0.202
+"CS vs elav",2185,FALSE,0.0138141730432807,0,62,TRUE,0,0.204
+"mES DIV-8 vs DIV7",1537,TRUE,0.000000572385983712154,1.00129213002823,192,TRUE,0,0.206

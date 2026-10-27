@@ -1,0 +1,7 @@
+"Sample","Gene","Isoform","n","mean","sem"
+"Control head","Dscam1","Long",4,0,0
+"Control head","Khc-73","Long",4,0.940203382504611,0.0111529397676059
+"Control head","Dscam1","Short",4,0.92149705,0.0354765182584041
+"Dscam1_long_3'UTR_mutant head","Dscam1","Short",4,0.662383658,0.0437571544379245
+"Control head","Khc-73","Short",4,0.0540475179366615,0.0105505119830947
+"Khc-73 long_3'UTR_mutant head","Khc-73","Short",4,0.527470308190009,0.00549400932895705

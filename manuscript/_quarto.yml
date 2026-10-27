@@ -1,0 +1,21 @@
+project:
+  type: manuscript
+  output-dir: _output
+
+manuscript:
+  article: manuscript.qmd
+
+format:
+  html:
+    toc: true
+    number-sections: true
+  docx: default
+  pdf:
+    documentclass: article
+    keep-tex: true
+
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+

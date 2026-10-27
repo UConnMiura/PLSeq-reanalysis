@@ -1,0 +1,31 @@
+"contrast","fdr","fold_cutoff","events","genes"
+"Embryo 2-4h vs 16-18h",0.01,1.5,67,67
+"Embryo 2-4h vs 16-18h",0.01,2,67,67
+"Embryo 2-4h vs 16-18h",0.01,3,56,56
+"Embryo 2-4h vs 16-18h",0.05,1.5,252,252
+"Embryo 2-4h vs 16-18h",0.05,2,252,252
+"Embryo 2-4h vs 16-18h",0.05,3,194,194
+"Ovary vs head",0.01,1.5,93,93
+"Ovary vs head",0.01,2,93,93
+"Ovary vs head",0.01,3,87,87
+"Ovary vs head",0.05,1.5,290,290
+"Ovary vs head",0.05,2,290,290
+"Ovary vs head",0.05,3,258,258
+"CS vs elav,fne",0.01,1.5,46,46
+"CS vs elav,fne",0.01,2,46,46
+"CS vs elav,fne",0.01,3,35,35
+"CS vs elav,fne",0.05,1.5,131,131
+"CS vs elav,fne",0.05,2,131,131
+"CS vs elav,fne",0.05,3,85,85
+"CS vs elav",0.01,1.5,0,0
+"CS vs elav",0.01,2,0,0
+"CS vs elav",0.01,3,0,0
+"CS vs elav",0.05,1.5,2,2
+"CS vs elav",0.05,2,2,2
+"CS vs elav",0.05,3,2,2
+"mES DIV-8 vs DIV7",0.01,1.5,1183,1183
+"mES DIV-8 vs DIV7",0.01,2,1183,1183
+"mES DIV-8 vs DIV7",0.01,3,833,833
+"mES DIV-8 vs DIV7",0.05,1.5,1537,1537
+"mES DIV-8 vs DIV7",0.05,2,1537,1537
+"mES DIV-8 vs DIV7",0.05,3,1047,1047
