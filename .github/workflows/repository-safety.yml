@@ -3,6 +3,7 @@ name: Repository safety
 on:
   push:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   reject-large-or-sequencing-files:

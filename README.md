@@ -1,5 +1,7 @@
 # Reproducible reanalysis of targeted long-read PL-Seq data
 
+[![Repository safety](https://github.com/UConnMiura/PLSeq-reanalysis/actions/workflows/repository-safety.yml/badge.svg)](https://github.com/UConnMiura/PLSeq-reanalysis/actions/workflows/repository-safety.yml)
+
 This repository contains the code, compact analysis inputs, statistical outputs,
 figure sources, and Quarto manuscript for a reproducible reanalysis of the
 PL-Seq study associated with PMID 37679364.

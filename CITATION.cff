@@ -8,6 +8,8 @@ authors:
     affiliation: "Department of Genetics and Genome Sciences, University of Connecticut School of Medicine; Institute for System Genomics, University of Connecticut"
 version: 0.1.0
 date-released: 2026-10-27
+repository-code: "https://github.com/UConnMiura/PLSeq-reanalysis"
+url: "https://github.com/UConnMiura/PLSeq-reanalysis"
 identifiers:
   - type: other
     value: "PMID:37679364"
