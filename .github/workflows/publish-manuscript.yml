@@ -33,6 +33,7 @@ jobs:
           cp figures/main/*.png manuscript/_output/figures/
           cp figures/main/*.pdf manuscript/_output/figures/
           cp figures/supplementary/*.pdf manuscript/_output/figures/
+          sed -i 's|../figures/main/|figures/|g' manuscript/_output/index.html
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
@@ -48,4 +49,3 @@ jobs:
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-
