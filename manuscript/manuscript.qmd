@@ -173,7 +173,7 @@ The FASTQ files reanalyzed here are deposited under NCBI BioProject PRJNA771049 
 
 ## Code Availability
 
-The scripts, Quarto manuscript source, Slurm templates, small source and result tables, manifests, Apptainer definition file, software versions, and container checksum are publicly available at [https://github.com/UConnMiura/PLSeq-reanalysis](https://github.com/UConnMiura/PLSeq-reanalysis). The archived release corresponding to this manuscript is available from Zenodo at [https://doi.org/10.5281/zenodo.23712456](https://doi.org/10.5281/zenodo.23712456). The Zenodo concept DOI, which resolves to the latest archived version of the repository, is [https://doi.org/10.5281/zenodo.23712455](https://doi.org/10.5281/zenodo.23712455). The repository is distributed under the MIT License.
+The scripts, Quarto manuscript source, Slurm templates, small source and result tables, manifests, Apptainer definition file, software versions, and container checksum are publicly available at [https://github.com/UConnMiura/PLSeq-reanalysis](https://github.com/UConnMiura/PLSeq-reanalysis). Versioned releases are archived by Zenodo; the concept DOI [https://doi.org/10.5281/zenodo.23712455](https://doi.org/10.5281/zenodo.23712455) resolves to the latest archived version of the repository. The repository is distributed under the MIT License.
 
 ## References
 

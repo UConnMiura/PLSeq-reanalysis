@@ -1,20 +1,17 @@
 cff-version: 1.2.0
 message: "If you use this reanalysis workflow, please cite this repository and the associated manuscript."
-title: "Reanalysis of targeted long-read RNA sequencing improves statistical inference, read-level visualization, and reuse"
+title: "Reproducible reanalysis of targeted long-read RNA sequencing data improves statistical inference and read-level visualization"
 type: software
 authors:
   - family-names: Miura
     given-names: Pedro
     affiliation: "Department of Genetics and Genome Sciences, University of Connecticut School of Medicine; Institute for System Genomics, University of Connecticut"
-version: 0.1.1
+version: 0.1.2
 date-released: 2026-10-27
 repository-code: "https://github.com/UConnMiura/PLSeq-reanalysis"
 url: "https://github.com/UConnMiura/PLSeq-reanalysis"
-doi: "10.5281/zenodo.23712456"
+doi: "10.5281/zenodo.23712455"
 identifiers:
-  - type: doi
-    value: "10.5281/zenodo.23712455"
-    description: "Concept DOI resolving to the latest archived repository release"
   - type: other
     value: "PMID:37679364"
     description: "Original PL-Seq study reanalyzed by this repository"

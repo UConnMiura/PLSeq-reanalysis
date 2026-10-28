@@ -219,10 +219,9 @@ provided in `docs/AI-use.md`.
 
 ## Citation
 
-Release `v0.1.1` is archived as
-[doi:10.5281/zenodo.23712456](https://doi.org/10.5281/zenodo.23712456).
-For citations intended to resolve to the latest archived version, use the
-concept DOI [doi:10.5281/zenodo.23712455](https://doi.org/10.5281/zenodo.23712455).
+Versioned GitHub releases are archived by Zenodo. For citations intended to
+resolve to the latest archived version, use the concept DOI
+[doi:10.5281/zenodo.23712455](https://doi.org/10.5281/zenodo.23712455).
 Citation metadata is also provided in `CITATION.cff`.
 
 ## License
