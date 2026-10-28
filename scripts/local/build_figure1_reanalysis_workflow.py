@@ -60,7 +60,7 @@ def workflow(ax):
         ("Recover", "Map samples; audit files;\nreconstruct missing context", "#EAF1F5"),
         ("Recompute", "FASTQ -> dm6 BAM;\nlong/short molecule filters", "#EEEAF7"),
         ("Reanalyze", "Replicate-level effects;\nBH-adjusted q values", "#F8ECEE"),
-        ("Reuse", "Read-level figures, Quarto,\ncontainer and data products", "#EAF3ED"),
+        ("Reuse", "Read-level figures, Quarto,\nGitHub, Zenodo and preprint", "#EAF3ED"),
     ]
     left, gap = 0.015, 0.018
     width = (0.97 - gap * 4) / 5
@@ -109,22 +109,23 @@ def improvements(ax):
 
 def timeline(ax):
     ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.axis("off")
-    ax.text(0.01, 0.96, "A three-day intensive reanalysis sprint",
+    ax.text(0.01, 0.96, "A four-day reanalysis and dissemination sprint",
             fontsize=10.2, fontweight="bold", ha="left", va="top")
-    ax.text(0.99, 0.96, "24-26 October 2026", fontsize=7.1,
+    ax.text(0.99, 0.96, "24-27 October 2026", fontsize=7.1,
             color=MUTED, ha="right", va="top")
 
     x0, x1, yline = 0.06, 0.94, 0.54
     ax.plot([x0, x1], [yline, yline], color="#B8B8B8", lw=1.3)
     days = [
         (x0, "Day 1", "Paper + supplement audit\nPhase 1/2 tables\nFASTQ reconstruction pilot", BLUE),
-        ((x0+x1)/2, "Day 2", "HPC alignment + filtering\nReplicate-aware statistics\nFigures 2-4 redesign", PURPLE),
-        (x1, "Day 3", "Figure 5 + locus catalog\nPublication-style figure system\nManuscript architecture", GREEN),
+        (x0 + (x1-x0)/3, "Day 2", "HPC alignment + filtering\nReplicate-aware statistics\nFigures 2-4 redesign", PURPLE),
+        (x0 + 2*(x1-x0)/3, "Day 3", "Figure 5 + locus catalog\nPublication-style figures\nManuscript draft", GREEN),
+        (x1, "Day 4", "GitHub repository published\nZenodo release archived\nbioRxiv submission", RED),
     ]
     for i, (x, day, text, color) in enumerate(days):
         ax.scatter([x], [yline], s=52, color=color, edgecolor="white", linewidth=1.0, zorder=3)
-        ha = "left" if i == 0 else ("right" if i == 2 else "center")
-        tx = x if i == 1 else x + (0.005 if i == 0 else -0.005)
+        ha = "left" if i == 0 else ("right" if i == len(days) - 1 else "center")
+        tx = x if i not in (0, len(days) - 1) else x + (0.005 if i == 0 else -0.005)
         ax.text(tx, yline + 0.16, day, fontsize=7.4, fontweight="bold", ha=ha, color=color)
         ax.text(tx, yline - 0.13, text, fontsize=6.3, ha=ha, va="top",
                 color="#444444", linespacing=1.35)
@@ -145,9 +146,6 @@ def build():
     panel_label(fig, 0.018, 0.300, "C")
     fig.suptitle("Reanalysis converts an archived PL-Seq study into a reusable research resource",
                  x=0.065, y=0.985, ha="left", fontsize=12.5, fontweight="bold")
-    fig.text(0.065, 0.957,
-             "Reproduction, statistical refinement and read-level visualization were integrated into one executable workflow.",
-             ha="left", fontsize=7.3, color=MUTED)
     pdf = OUT / "Figure1_reanalysis_workflow_and_timeline.pdf"
     png = OUT / "Figure1_reanalysis_workflow_and_timeline.png"
     fig.savefig(pdf)

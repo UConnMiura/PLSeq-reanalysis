@@ -2,13 +2,13 @@ PYTHON ?= python3
 MPLCONFIGDIR ?= /tmp/plseq-matplotlib
 export MPLCONFIGDIR
 
-.PHONY: check figures-core manuscript clean-generated
+.PHONY: check figures-core manuscript manuscript-biorxiv clean-generated
 
 check:
 	$(PYTHON) tests/check_repository_files.py
 	$(PYTHON) tests/verify_figure_checksums.py
 	$(PYTHON) -m py_compile scripts/local/*.py tests/*.py
-	@for script in scripts/hpc/*.sbatch scripts/install_git_hooks.sh manuscript/build_reader_pdf.sh; do bash -n "$$script"; done
+	@for script in scripts/hpc/*.sbatch scripts/install_git_hooks.sh manuscript/build_reader_pdf.sh manuscript/build_biorxiv_pdf.sh; do bash -n "$$script"; done
 
 figures-core:
 	$(PYTHON) scripts/local/build_figure1_reanalysis_workflow.py
@@ -20,6 +20,9 @@ figures-core:
 
 manuscript: figures-core
 	bash manuscript/build_reader_pdf.sh
+
+manuscript-biorxiv:
+	bash manuscript/build_biorxiv_pdf.sh
 
 clean-generated:
 	@echo "Generated outputs are intentionally retained for publication review."

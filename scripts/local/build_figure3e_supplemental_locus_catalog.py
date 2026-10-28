@@ -44,12 +44,12 @@ def load_inputs():
 def significance_badge(ax, q):
     significant = q < 0.05
     ax.text(
-        0.995, 1.29, f"BH q = {q:.2g}", transform=ax.transAxes,
-        ha="right", va="bottom", fontsize=6.2,
+        0.995, 1.39, f"BH q = {q:.2g}", transform=ax.transAxes,
+        ha="right", va="bottom", fontsize=5.3,
         color="#222222" if significant else "#666666",
         fontweight="bold" if significant else "normal",
-        bbox=(dict(boxstyle="round,pad=0.20", facecolor="#F7E4E6",
-                   edgecolor="#DDA9AF", linewidth=0.6)
+        bbox=(dict(boxstyle="round,pad=0.14", facecolor="#F7E4E6",
+                   edgecolor="#DDA9AF", linewidth=0.5)
               if significant else None),
         clip_on=False,
     )
@@ -123,12 +123,25 @@ def plot_locus(fig, slot, cfg, stat, style):
                     start, end, style["colors"]["reads"])
     plot_models(axes[4], cfg, gene, style)
 
-    axes[0].text(0.003, 1.12, "Long 3′UTR", transform=axes[0].transAxes,
-                 color=style["colors"]["long_utr"], fontsize=6.2,
-                 fontweight="bold", ha="left", va="bottom", clip_on=False)
-    axes[2].text(0.003, 1.12, "Short 3′UTR", transform=axes[2].transAxes,
-                 color=style["colors"]["short_utr"], fontsize=6.2,
-                 fontweight="bold", ha="left", va="bottom", clip_on=False)
+    summary_path = folder / f"{gene}.pileup_summary.tsv"
+    fraction_values = {
+        "long": base.fraction_summary(summary_path, "long"),
+        "short": base.fraction_summary(summary_path, "short"),
+    }
+    for ax, fraction, label, color in (
+        (axes[0], "long", "Long 3′UTR", style["colors"]["long_utr"]),
+        (axes[2], "short", "Short 3′UTR", style["colors"]["short_utr"]),
+    ):
+        values = fraction_values[fraction]
+        ax.text(0.003, 1.12, label, transform=ax.transAxes,
+                color=color, fontsize=6.2, fontweight="bold",
+                ha="left", va="bottom", clip_on=False)
+        ax.text(
+            0.997, 1.12,
+            f"PSI = {values['mean_psi']:.3f}   informative reads = {values['informative']:,}",
+            transform=ax.transAxes, color="#333333", fontsize=5.2,
+            ha="right", va="bottom", clip_on=False,
+        )
 
     delta, q = float(stat["delta_long_minus_short"]), float(stat["BH_q"])
     axes[0].set_title(f"{gene} CE{stat['CE']}   |   ΔPSI = {delta:+.3f}",
@@ -154,8 +167,8 @@ def render_page(rows, stats, style, page_number, pdf):
     for i, cfg in enumerate(rows):
         slot = grid[i // 2, i % 2]
         plot_locus(fig, slot, cfg, stats[cfg["gene"]], style)
-    fig.text(0.975, 0.985, f"page {page_number} of 7",
-             fontsize=5.2, color="#666666", ha="right", va="top")
+    fig.text(0.075, 0.012, f"Supplementary Figure 1 | page {page_number} of 7",
+             fontsize=5.2, color="#666666", ha="left", va="bottom")
     fig.text(0.975, 0.018,
              "Coverage is the replicate-mean fractional coverage; gray tracks show sampled observed molecules. "
              "Transcript models are representative dm6 annotations.",
@@ -222,7 +235,7 @@ def main():
     for path in (OUT, PAGE_PNG, INDIVIDUAL_PDF, INDIVIDUAL_PNG):
         path.mkdir(parents=True, exist_ok=True)
     configs, stats = load_inputs()
-    multipage = OUT / "Figure3E_supplemental_locus_catalog_all_28.pdf"
+    multipage = ROOT / "figures/supplementary/Supplementary_Figure_1.pdf"
     expected_pages = [PAGE_PNG / f"Figure3E_supplemental_catalog_page_{i:02d}.png"
                       for i in range(1, math.ceil(len(configs) / 4) + 1)]
     force = os.environ.get("PLSEQ_FORCE_REBUILD", "0") == "1"
