@@ -34,3 +34,16 @@ GitHub release `v0.1.1` was archived by Zenodo on 2026-10-27.
 - Version DOI: `10.5281/zenodo.23712456`
 - Concept DOI: `10.5281/zenodo.23712455`
 - Record: <https://zenodo.org/records/23712456>
+
+Zenodo version v3 added the exact 155 MB AMD64 Apptainer image used for the
+FASTQ-level reconstruction, together with its SHA-256 checksum, embedded image
+labels, command-derived software versions, and a container-specific README.
+
+- Container archive DOI: `10.5281/zenodo.23769044`
+- Concept DOI: `10.5281/zenodo.23712455`
+- SIF SHA-256: `6037ffe045c08e7435e8a997b890d791f6f3554ab01cef16b0b895761c199beb`
+- Record: <https://zenodo.org/records/23769044>
+
+The original image definition file was not retained. Verification therefore
+establishes identity with the executed binary environment, not independent
+reconstruction of that binary from a definition recipe.

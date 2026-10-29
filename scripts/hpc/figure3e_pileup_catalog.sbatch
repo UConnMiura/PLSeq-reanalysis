@@ -1,22 +1,26 @@
 #!/bin/bash
 #SBATCH --job-name=plseq-cat
-#SBATCH --partition=general
-#SBATCH --qos=general
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=12G
 #SBATCH --time=04:00:00
 #SBATCH --array=0-27%4
-#SBATCH --output=logs/pileup_catalog_%A_%a.out
-#SBATCH --error=logs/pileup_catalog_%A_%a.err
 
 set -euo pipefail
 
 PROJECT="${PLSEQ_HPC_PROJECT:?Set PLSEQ_HPC_PROJECT to the Mantis project directory}"
 IMAGE="${PLSEQ_APPTAINER_IMAGE:-$PROJECT/software/pullalong-core.sif}"
 CATALOG="$PROJECT/metadata/figure3e_pileup_catalog_manifest.tsv"
-SAMPLE_MAP="$PROJECT/metadata/rebuilt_v217/available_fastq_sample_map.tsv"
+SAMPLE_MAP="$PROJECT/metadata/analyzed_samples.tsv"
 PREP="$PROJECT/scripts/prepare_figure4_pileup.py"
 OUT_ROOT="$PROJECT/pileup_inputs/figure3e_catalog"
+
+if ! command -v apptainer >/dev/null 2>&1 && command -v module >/dev/null 2>&1; then
+    module load "${PLSEQ_APPTAINER_MODULE:-apptainer}"
+fi
+command -v apptainer >/dev/null 2>&1 || {
+    echo "ERROR: apptainer is unavailable; load it or set PLSEQ_APPTAINER_MODULE" >&2
+    exit 2
+}
 
 mkdir -p "$PROJECT/logs" "$OUT_ROOT"
 
@@ -35,9 +39,9 @@ mkdir -p "$gene_out"
 sample_manifest="$gene_out/sample_manifest.tsv"
 
 printf 'run_accession\treplicate\n' > "$sample_manifest"
-awk -F '\t' -v group="embryo_${probe_set}" '
+awk -F '\t' -v probe="$probe_set" '
   BEGIN {OFS="\t"}
-  NR>1 && $3==group {print $1,$5}
+  NR>1 && $8=="control" && $10==probe {print $1,$11}
 ' "$SAMPLE_MAP" | sort -t $'\t' -k2,2n >> "$sample_manifest"
 
 echo "Preparing $gene ($event), $probe_set, $(($(wc -l < "$sample_manifest") - 1)) replicates"

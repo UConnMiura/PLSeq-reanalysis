@@ -111,16 +111,29 @@ bash scripts/install_git_hooks.sh
 
 make check
 make figures-core
-make manuscript
+make manuscript-pdf
 ```
 
 The reviewed PNG outputs have recorded SHA-256 checksums. Automated tests
-verify that regenerated figures match the reviewed versions.
+verify that regenerated figures match the reviewed versions. `poppler` is part
+of the environment because the preflight step calls `pdfinfo`; XeLaTeX must be
+available separately for PDF creation. `make manuscript-pdf` builds only the
+PDF, whereas `make manuscript` intentionally regenerates the core figures first.
+
+The reviewed figures were created with Arial/Helvetica metrics. On systems
+without either font, Matplotlib may fall back to DejaVu Sans and produce a
+visually different raster, causing the strict checksum test to fail. The
+tracked publication figures remain the reviewed reference outputs while a
+fully bundled open-font revision is developed. Figure-generation commands
+overwrite the corresponding tracked files, so run them in a clean branch or
+worktree when comparing environments.
 
 ### Level 3: Reconstruct the analysis from FASTQ files
 
-The complete reconstruction begins with the public sequencing accessions in
-`config/accessions.tsv`. The SLURM workflow in `scripts/hpc/` performs:
+The complete reconstruction defaults to the 17 embryo FASTQ runs actually used
+in the reanalysis. `config/accessions.tsv` is the broader 49-run source-study
+inventory and is not used as the default Level 3 run manifest. The Slurm
+workflow in `scripts/hpc/` performs:
 
 1. FASTQ download and checksum validation.
 2. Spliced alignment to dm6 using minimap2.
@@ -131,8 +144,74 @@ The complete reconstruction begins with the public sequencing accessions in
 7. Long- and short-3′UTR PSI calculation.
 8. Preparation of compact plotting inputs.
 
-The HPC processing steps were run through a pinned Apptainer environment. The
-binary container is not stored in GitHub.
+The exact AMD64 Apptainer image is archived in Zenodo v3 at
+[doi:10.5281/zenodo.23769044](https://doi.org/10.5281/zenodo.23769044). It is
+not stored in GitHub. The original definition file was not retained; the SIF,
+checksum, embedded labels, and version report are the authoritative record of
+the executed environment.
+
+### Level 3 setup
+
+Clone the repository on the cluster and obtain the UCSC dm6 FASTA:
+
+```bash
+curl -L https://hgdownload.soe.ucsc.edu/goldenPath/dm6/bigZips/dm6.fa.gz \
+  -o dm6.fa.gz
+printf '4a5777324403eff92c3650c30af30120  dm6.fa.gz\n' | md5sum -c -
+gzip -dc dm6.fa.gz > dm6.fa
+```
+
+Create the complete project layout and download the verified container:
+
+```bash
+export PLSEQ_HPC_PROJECT=/path/to/hpc/project
+
+bash scripts/hpc/00_setup_project.sh \
+  --project "$PLSEQ_HPC_PROJECT" \
+  --dm6-fasta "$PWD/dm6.fa" \
+  --download-container
+
+export PLSEQ_APPTAINER_IMAGE="$PLSEQ_HPC_PROJECT/software/pullalong-core.sif"
+```
+
+The setup script creates the expected reference, BED, filtering-program,
+metadata, output, and log directories. It maps the small reviewed source files
+from `data/source/` into their runtime locations and builds the 17-run manifest
+from Supplementary Table 1.
+
+Submit each independently restartable stage after reviewing its predecessor:
+
+```bash
+bash scripts/hpc/submit_level3.sh download
+bash scripts/hpc/submit_level3.sh align
+bash scripts/hpc/submit_level3.sh filter
+```
+
+The wrapper creates `logs/`, derives the array range from the manifest, and
+defaults to four simultaneous tasks. Optional site settings are passed through
+environment variables rather than embedded personal or cluster-specific values:
+
+```bash
+export PLSEQ_ARRAY_LIMIT=4
+export PLSEQ_PARTITION=general       # omit when the cluster default is correct
+export PLSEQ_QOS=general             # omit when no QOS is required
+export PLSEQ_APPTAINER_MODULE='apptainer/1.4.4-gcc-11.4.0-znzbvwm'
+export PLSEQ_MAIL_USER='your.name@example.edu'  # optional; no email by default
+```
+
+Additional `sbatch` options may be supplied through `PLSEQ_SBATCH_ARGS`.
+Because the three stages are submitted separately, successfully downloaded or
+aligned samples can be processed without waiting indefinitely for one failed
+array task; rerunning a stage reuses FASTQs that already pass checksum and gzip
+validation.
+
+After filtering is complete, the same wrapper can submit the optional compact
+pileup-input stages with consistent site settings and absolute log paths:
+
+```bash
+bash scripts/hpc/submit_level3.sh figure3e-pileups
+bash scripts/hpc/submit_level3.sh figure5-supplement
+```
 
 ## Repository organization
 
@@ -186,6 +265,11 @@ The HPC scripts require an explicitly defined project and container:
 export PLSEQ_HPC_PROJECT=/path/to/hpc/project
 export PLSEQ_APPTAINER_IMAGE="$PLSEQ_HPC_PROJECT/software/pullalong-core.sif"
 ```
+
+Container checksum, inspection labels, and recorded versions are in
+`environment/container/`. Site-specific Slurm partition, QOS, module, email,
+and array-concurrency settings are deliberately not hardcoded into the batch
+scripts.
 
 ## Validation
 

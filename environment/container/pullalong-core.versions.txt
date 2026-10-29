@@ -1,0 +1,12 @@
+Apptainer host version: apptainer version 1.4.4
+minimap2: 2.17-r941
+
+SAMtools:
+samtools 1.6
+Using htslib 1.6
+
+pysam: 0.15.4
+
+featureCounts:
+
+featureCounts v2.0.6

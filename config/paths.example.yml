@@ -1,9 +1,8 @@
 # Copy this file to config/paths.yml and edit for the local system.
 # config/paths.yml is ignored by Git.
 project_root: /path/to/PLSeq_reanalysis_reproducible
-hpc_project_root: /projects/Enterica/Pedro/paper/plseq
-apptainer_image: /projects/Enterica/Pedro/paper/plseq/software/pullalong-core.sif
+hpc_project_root: /path/to/hpc/project
+apptainer_image: /path/to/hpc/project/software/pullalong-core.sif
 dm6_fasta: /path/to/dm6.fa
 fastq_directory: /path/to/fastq
 bam_directory: /path/to/bam
-

@@ -29,7 +29,9 @@ The paths below document the environment used during development; they are not
 required paths for future users.
 
 - Mantis project: `/projects/Enterica/Pedro/paper/plseq`
-- Mantis container: `/projects/Enterica/Pedro/paper/plseq/software/pullalong-core.sif`
+- Exact analysis container: archived as `pullalong-core.sif` in Zenodo record
+  <https://doi.org/10.5281/zenodo.23769044>; the binary itself remains excluded
+  from GitHub.
 - Original local working analysis: `PMID37679364_reanalysis`
 
 Portable workflow configuration will use `config/paths.yml`, created locally
@@ -42,4 +44,3 @@ from `config/paths.example.yml`. The local configuration is ignored by Git.
 3. Cite original sequencing reads by public run accession.
 4. Deposit large derived files separately only if they add value beyond the
    documented regeneration workflow.
-

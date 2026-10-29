@@ -5,6 +5,7 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 cd "$SCRIPT_DIR"
 
 mkdir -p output/pdf
+MAINFONT="${PLSEQ_MAINFONT:-Libertinus Sans}"
 
 pandoc manuscript.qmd \
   --from=markdown-implicit_figures \
@@ -14,7 +15,7 @@ pandoc manuscript.qmd \
   --lua-filter=figure-box.lua \
   --include-in-header=reader-preamble.tex \
   --pdf-engine=xelatex \
-  -V mainfont='Helvetica Neue' \
+  -V mainfont="$MAINFONT" \
   -V colorlinks=true \
   -V linkcolor=PaperBlue \
   -V urlcolor=PaperBlue \

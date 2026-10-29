@@ -1,13 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name=fig5-supp
-#SBATCH --partition=general
-#SBATCH --qos=general
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=8G
 #SBATCH --time=02:00:00
 #SBATCH --array=0-27%4
-#SBATCH --output=logs/fig5_supp_%A_%a.out
-#SBATCH --error=logs/fig5_supp_%A_%a.err
 
 set -euo pipefail
 
@@ -16,10 +12,16 @@ IMAGE="${PLSEQ_APPTAINER_IMAGE:-$PROJECT/software/pullalong-core.sif}"
 CATALOG="$PROJECT/metadata/figure3e_pileup_catalog_manifest.tsv"
 PREP="$PROJECT/scripts/prepare_figure4_pileup.py"
 CONTROL_MANIFEST="$PROJECT/metadata/figure6_control/manifest.tsv"
-MUTANT_MANIFEST="$PROJECT/metadata/figure6_elav5/filter_manifest.tsv"
+MUTANT_MANIFEST="$PROJECT/metadata/figure6_elav5/manifest.tsv"
 OUT_ROOT="$PROJECT/pileup_inputs/figure5_supplement"
 
-module load apptainer/1.4.4-gcc-11.4.0-znzbvwm
+if ! command -v apptainer >/dev/null 2>&1 && command -v module >/dev/null 2>&1; then
+    module load "${PLSEQ_APPTAINER_MODULE:-apptainer}"
+fi
+command -v apptainer >/dev/null 2>&1 || {
+    echo "ERROR: apptainer is unavailable; load it or set PLSEQ_APPTAINER_MODULE" >&2
+    exit 2
+}
 
 mkdir -p "$PROJECT/logs" "$OUT_ROOT"
 
@@ -80,7 +82,7 @@ prepare_condition \
 prepare_condition \
   elav5 \
   "$MUTANT_MANIFEST" \
-  "$PROJECT/filtered_bam/figure6_elav5" \
-  "$PROJECT/psi/figure6_elav5"
+  "$PROJECT/filtered_bam" \
+  "$PROJECT/psi"
 
 echo "Completed $gene at $(date --iso-8601=seconds)"

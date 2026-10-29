@@ -12,7 +12,9 @@ conda activate plseq-reanalysis
 
 The manuscript reader PDF additionally requires XeLaTeX. Quarto may be used for
 multi-format manuscript output; the reader PDF build itself invokes Pandoc and
-XeLaTeX through `manuscript/build_reader_pdf.sh`.
+XeLaTeX through `manuscript/build_reader_pdf.sh`. The default PDF font is
+Libertinus Sans and can be overridden with `PLSEQ_MAINFONT`. Poppler is included
+because the figure preflight check calls `pdfinfo`.
 
 ## HPC processing environment
 
@@ -22,8 +24,8 @@ pysam 0.15.4, and featureCounts 2.0.6. HPC scripts load Apptainer 1.4.4 and
 require the image path through `PLSEQ_APPTAINER_IMAGE`, or default to
 `$PLSEQ_HPC_PROJECT/software/pullalong-core.sif`.
 
-The original image definition was not recovered into the local publication
-workspace and must not be reconstructed from memory. Before public release,
-either the exact definition should be recovered or the verified SIF should be
-archived separately and its SHA-256 checksum recorded here.
-
+The exact image is archived at <https://doi.org/10.5281/zenodo.23769044>.
+Checksum, inspection, and version records are tracked in `environment/container/`.
+The original image definition was not retained, so the archived SIF is the
+authoritative executed environment and must not be described as rebuildable
+from a definition file.
