@@ -29,3 +29,9 @@ Checksum, inspection, and version records are tracked in `environment/container/
 The original image definition was not retained, so the archived SIF is the
 authoritative executed environment and must not be described as rebuildable
 from a definition file.
+
+Figure generation can alternatively use the rebuildable
+`environment/container/plseq-plotting.def` image. This newer image supplies
+Matplotlib, pyGenomeTracks, R plotting packages, Pandoc, and Poppler while
+keeping the historical alignment/filtering container unchanged. Build and
+test instructions are in `environment/container/README.md`.

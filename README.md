@@ -128,6 +128,19 @@ fully bundled open-font revision is developed. Figure-generation commands
 overwrite the corresponding tracked files, so run them in a clean branch or
 worktree when comparing environments.
 
+For systems with Apptainer, the repository also includes a rebuildable plotting
+container definition and an executable smoke test:
+
+```bash
+apptainer build --fakeroot plseq-plotting.sif \
+  environment/container/plseq-plotting.def
+bash tests/test_plotting_container.sh \
+  plseq-plotting.sif /tmp/plseq-plotting-test
+```
+
+This plotting image is separate from the historical `pullalong-core.sif` used
+for Level 3 alignment and filtering.
+
 ### Level 3: Reconstruct the analysis from FASTQ files
 
 The complete reconstruction defaults to the 17 embryo FASTQ runs actually used
