@@ -206,10 +206,10 @@ array task; rerunning a stage reuses FASTQs that already match their deposited
 MD5 checksum. The workflow does not additionally run `gzip -t`: both operations
 read the complete archive, and the authoritative deposited MD5 is sufficient.
 
-### Experimental optimized filtering
+### Validated optimized filtering
 
 The published three-program filtering route remains the reference workflow and
-is selected with `filter`. An experimental optimized implementation preserves
+is selected with `filter`. The validated optimized implementation preserves
 the filtering order, thresholds, and legacy PSI arithmetic while eliminating
 repeated interval fetches, temporary CSV files, quadratic list deletion, and
 unused failure BAMs. It writes to `optimized/<run>/`, leaving reference outputs
@@ -218,6 +218,21 @@ untouched:
 ```bash
 bash scripts/hpc/submit_level3.sh filter-optimized
 ```
+
+The wrapper runs one sample per Slurm array task. Set the maximum number of
+samples processed concurrently before submission; four is the default and is a
+conservative starting point on Mantis:
+
+```bash
+export PLSEQ_ARRAY_LIMIT=4
+filter_job=$(bash scripts/hpc/submit_level3.sh filter-optimized)
+sacct -j "$filter_job" --format=JobID,State,Elapsed,MaxRSS,ExitCode
+```
+
+This is sample-level parallelism: each sample remains independent and receives
+the four CPUs requested by the batch script. Increase the array limit only when
+the number of concurrent jobs and aggregate filesystem load are appropriate
+for the cluster allocation.
 
 The same program can run locally when Python and pysam are available:
 
@@ -232,8 +247,9 @@ Before treating optimized products as interchangeable, compare them with the
 legacy final BAMs and PSI tables using
 `scripts/optimized/compare_implementations.py`. This comparison uses complete
 SAM alignment records, including multiplicity, rather than filenames or BAM
-file checksums. The initial non-empty local equivalence test and its limitations
-are recorded in [`docs/optimized_filter_validation.md`](docs/optimized_filter_validation.md).
+file checksums. Complete local and archived-container Mantis validations,
+including exact output comparisons and resource use, are recorded in
+[`docs/optimized_filter_validation.md`](docs/optimized_filter_validation.md).
 
 After filtering is complete, the same wrapper can submit the optional compact
 pileup-input stages with consistent site settings and absolute log paths:

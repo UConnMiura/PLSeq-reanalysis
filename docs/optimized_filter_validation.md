@@ -1,6 +1,6 @@
 # Optimized filtering validation
 
-Status: experimental, local validation only  
+Status: validated locally and on Mantis with the archived Apptainer image
 Validation date: 2026-10-30
 
 The optimized filtering implementation is additive. The archived
@@ -94,22 +94,37 @@ including all four coverage filters, distal classification, poly(A) filtering,
 three PSI calculations, QC counts, checksums, and BAM indexing.
 
 This full-sample result demonstrates a substantial local speed improvement
-without changing alignment membership or reconstructed PSI. It does not replace
-the remaining archived-container test because the local runtime used newer
-pysam and SAMtools versions for both implementations.
+without changing alignment membership or reconstructed PSI.
 
-## Required next validation
+## Mantis archived-container validation
 
-Before the optimized implementation is used as a publication-equivalent
-replacement, it should be tested on Mantis with the archived Apptainer SIF and
-at least one complete embryo BAM. This final test evaluates compatibility with
-pysam 0.15.4 and records Slurm resource use. Required comparisons are:
+The complete `SRR16318553` test was subsequently run as Slurm job `4382048`
+on the UConn School of Medicine High Performance Computing cluster. The job
+used the archived `pullalong-core.sif` image (SHA-256
+`6037ffe045c08e7435e8a997b890d791f6f3554ab01cef16b0b895761c199beb`), including
+pysam 0.15.4. The optimized program completed successfully in 129.659 seconds;
+Slurm reported 2 min 16 s elapsed time and 662,800 KiB peak resident memory.
 
-1. every stage count;
-2. complete long-BAM alignment records and multiplicity;
-3. complete short-BAM alignment records and multiplicity;
-4. all-, long-, and short-molecule PSI tables;
-5. runtime and peak memory from Slurm accounting.
+The Mantis result matched the established archived-workflow products:
+
+- 7,155 long-molecule BAM records and 58,486 short-molecule BAM records;
+- exact all-, long-, and short-molecule PSI CSV files;
+- exact counts at every filtering stage;
+- valid final BAM files according to `samtools quickcheck`.
+
+Relative to the approximately 21-minute archived workflow, the optimized
+Mantis execution was approximately 9.7-fold faster. The absolute runtime is
+slower than the local optimized benchmark, but the scientifically relevant
+outputs remain identical under the publication container.
+
+## Full-dataset execution model
+
+The optimized program processes one sample per Slurm array task. Sample-level
+parallelism is controlled by `PLSEQ_ARRAY_LIMIT`; for example, a limit of four
+runs four samples concurrently. Each task receives four CPUs, which are used
+by supported BAM operations, while the Python classification logic preserves
+deterministic per-sample behavior. This combination avoids combining reads
+across samples and is the preferred way to scale the workflow on Mantis.
 
 The optimized Slurm route writes to `optimized/<run>/` and therefore cannot
 overwrite the legacy outputs under `filtered_bam/` and `psi/`.
