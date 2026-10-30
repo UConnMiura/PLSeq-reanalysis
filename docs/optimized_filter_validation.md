@@ -58,11 +58,52 @@ An additional local SRR16474418 pilot produced exact final BAM and PSI
 equivalence, but its current 28-event filtering path yielded no final long or
 short molecules and is therefore a weaker test than the non-empty demo.
 
+## Complete embryo-BAM benchmark
+
+The complete `SRR16318553` embryo BAM generated on Mantis was transferred and
+processed locally by both implementations. The input contained 392,808 total
+alignment records (357,047 primary alignments). Both implementations used the
+same input BAM, BED files, local Python/pysam 0.24.1 environment, and local
+SAMtools 1.24 installation.
+
+Every filtering-stage count was identical:
+
+| Stage | Legacy records | Optimized records |
+|---|---:|---:|
+| Raw | 392,808 | 392,808 |
+| Upstream-exon pass | 141,534 | 141,534 |
+| Downstream-exon pass | 104,188 | 104,188 |
+| Universal-UTR pass | 97,274 | 97,274 |
+| Distal overlap | 13,338 | 13,338 |
+| Short candidates | 83,936 | 83,936 |
+| Long final | 7,155 | 7,155 |
+| Short final | 58,486 | 58,486 |
+
+Complete SAM record strings and multiplicity matched exactly for all 7,155
+long and 58,486 short final records. All fields in all 84 PSI rows (28 events
+in each of the all-, long-, and short-molecule tables) also matched exactly.
+
+| Implementation | Wall time | Relative time |
+|---|---:|---:|
+| Archived three-program workflow | 1,263.31 s (21 min 3.31 s) | 18.74× |
+| Optimized workflow | 67.42 s (1 min 7.42 s) | 1.00× |
+
+The four legacy exon-filter calls required 427.41, 379.60, 369.05, and 65.59
+seconds, respectively. The optimized timing covers the complete pipeline,
+including all four coverage filters, distal classification, poly(A) filtering,
+three PSI calculations, QC counts, checksums, and BAM indexing.
+
+This full-sample result demonstrates a substantial local speed improvement
+without changing alignment membership or reconstructed PSI. It does not replace
+the remaining archived-container test because the local runtime used newer
+pysam and SAMtools versions for both implementations.
+
 ## Required next validation
 
 Before the optimized implementation is used as a publication-equivalent
 replacement, it should be tested on Mantis with the archived Apptainer SIF and
-at least one complete embryo BAM. Required comparisons are:
+at least one complete embryo BAM. This final test evaluates compatibility with
+pysam 0.15.4 and records Slurm resource use. Required comparisons are:
 
 1. every stage count;
 2. complete long-BAM alignment records and multiplicity;
