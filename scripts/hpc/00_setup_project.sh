@@ -38,6 +38,7 @@ mkdir -p \
   "$PROJECT"/{bam,fastq,filtered_bam,logs,metadata,qc,psi,work} \
   "$PROJECT/references/beds" \
   "$PROJECT/software/Pull-a-long" \
+  "$PROJECT/software/PLSeq-reanalysis" \
   "$PROJECT/scripts" \
   "$PROJECT/metadata/figure6_control" \
   "$PROJECT/metadata/figure6_elav5"
@@ -53,6 +54,8 @@ install -m 0644 "$REPO_ROOT/data/source/SE_PSI.figure3e.suppdata9.bed" "$PROJECT
 for program in exon_covering.py polyA_filtering.py calculate_PSI.py; do
     install -m 0644 "$REPO_ROOT/data/source/$program" "$PROJECT/software/Pull-a-long/$program"
 done
+install -m 0755 "$REPO_ROOT/scripts/optimized/filter_and_psi.py" \
+  "$PROJECT/software/PLSeq-reanalysis/filter_and_psi.py"
 install -m 0755 "$REPO_ROOT/scripts/local/prepare_figure4_pileup.py" "$PROJECT/scripts/prepare_figure4_pileup.py"
 install -m 0644 "$REPO_ROOT/config/figure3e_pileup_catalog_manifest.tsv" \
   "$PROJECT/metadata/figure3e_pileup_catalog_manifest.tsv"

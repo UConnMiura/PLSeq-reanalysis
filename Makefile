@@ -9,8 +9,8 @@ check:
 	$(PYTHON) tests/check_repository_files.py
 	$(PYTHON) tests/check_source_checksums.py
 	$(PYTHON) tests/verify_figure_checksums.py
-	$(PYTHON) -m py_compile scripts/local/*.py tests/*.py
-	@for script in scripts/hpc/*.sbatch scripts/install_git_hooks.sh manuscript/build_reader_pdf.sh manuscript/build_biorxiv_pdf.sh; do bash -n "$$script"; done
+	$(PYTHON) -m py_compile scripts/local/*.py scripts/optimized/*.py tests/*.py
+	@for script in scripts/hpc/*.sbatch scripts/local/*.sh scripts/install_git_hooks.sh manuscript/build_reader_pdf.sh manuscript/build_biorxiv_pdf.sh; do bash -n "$$script"; done
 	bash tests/check_hpc_portability.sh
 
 figures-core:

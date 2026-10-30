@@ -24,6 +24,7 @@ for required in \
   software/Pull-a-long/exon_covering.py \
   software/Pull-a-long/polyA_filtering.py \
   software/Pull-a-long/calculate_PSI.py \
+  software/PLSeq-reanalysis/filter_and_psi.py \
   scripts/prepare_figure4_pileup.py
 do
   [[ -s "$tmp/project/$required" ]] || {
@@ -46,17 +47,28 @@ printf '%s\n' \
   > "$tmp/bin/sbatch"
 chmod +x "$tmp/bin/sbatch"
 
-MOCK_SBATCH_OUT="$tmp/sbatch.args" \
-PATH="$tmp/bin:$PATH" \
-PLSEQ_HPC_PROJECT="$tmp/project" \
-PLSEQ_ARRAY_LIMIT=3 \
-PLSEQ_PARTITION=test-partition \
-PLSEQ_QOS=test-qos \
-bash "$ROOT/scripts/hpc/submit_level3.sh" download >/dev/null
+submitted_job=$(
+  MOCK_SBATCH_OUT="$tmp/sbatch.args" \
+  PATH="$tmp/bin:$PATH" \
+  PLSEQ_HPC_PROJECT="$tmp/project" \
+  PLSEQ_ARRAY_LIMIT=3 \
+  PLSEQ_PARTITION=test-partition \
+  PLSEQ_QOS=test-qos \
+  bash "$ROOT/scripts/hpc/submit_level3.sh" download 2>/dev/null
+)
+
+[[ "$submitted_job" == 123456 ]]
 
 grep -Fx -- '--array=0-16%3' "$tmp/sbatch.args" >/dev/null
 grep -Fx -- '--partition=test-partition' "$tmp/sbatch.args" >/dev/null
 grep -Fx -- '--qos=test-qos' "$tmp/sbatch.args" >/dev/null
 grep -F -- "$tmp/project/logs/plseq_download.%A_%a.out" "$tmp/sbatch.args" >/dev/null
+
+MOCK_SBATCH_OUT="$tmp/sbatch-fast.args" \
+PATH="$tmp/bin:$PATH" \
+PLSEQ_HPC_PROJECT="$tmp/project" \
+bash "$ROOT/scripts/hpc/submit_level3.sh" filter-optimized >/dev/null
+
+grep -F -- '03_filter_and_psi_optimized.sbatch' "$tmp/sbatch-fast.args" >/dev/null
 
 echo "HPC portability check passed."

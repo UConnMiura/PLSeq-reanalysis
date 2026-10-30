@@ -124,5 +124,5 @@ count_bam short_final        "$BAMOUT/short.bam"
 
 sha256sum "$PSIOUT/all.psi.csv" "$PSIOUT/long.psi.csv" \
   "$PSIOUT/short.psi.csv" "$COUNT_FILE" > "$PSIOUT/SHA256SUMS"
-touch "$PSIOUT/PIPELINE_COMPLETE"
+printf 'legacy PL-Seq filtering completed\n' > "$PSIOUT/PIPELINE_COMPLETE"
 echo "Completed: $(date --iso-8601=seconds)"

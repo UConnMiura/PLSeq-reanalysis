@@ -6,9 +6,10 @@ case "$stage" in
     download) script=01_download.sbatch; stem=download ;;
     align) script=02_align.sbatch; stem=align ;;
     filter) script=03_filter_and_psi.sbatch; stem=filter ;;
+    filter-optimized) script=03_filter_and_psi_optimized.sbatch; stem=filter_optimized ;;
     figure3e-pileups) script=figure3e_pileup_catalog.sbatch; stem=figure3e_pileups ;;
     figure5-supplement) script=figure5_supplement_pileups.sbatch; stem=figure5_supplement ;;
-    *) echo "Usage: $0 {download|align|filter|figure3e-pileups|figure5-supplement}" >&2; exit 2 ;;
+    *) echo "Usage: $0 {download|align|filter|filter-optimized|figure3e-pileups|figure5-supplement}" >&2; exit 2 ;;
 esac
 
 PROJECT="${PLSEQ_HPC_PROJECT:?Set PLSEQ_HPC_PROJECT to the prepared HPC project directory}"
@@ -41,4 +42,5 @@ fi
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 job_id=$(sbatch "${args[@]}" "$SCRIPT_DIR/$script")
-echo "Submitted $stage array ($array): $job_id"
+echo "Submitted $stage array ($array): $job_id" >&2
+printf '%s\n' "$job_id"

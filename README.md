@@ -202,8 +202,38 @@ export PLSEQ_MAIL_USER='your.name@example.edu'  # optional; no email by default
 Additional `sbatch` options may be supplied through `PLSEQ_SBATCH_ARGS`.
 Because the three stages are submitted separately, successfully downloaded or
 aligned samples can be processed without waiting indefinitely for one failed
-array task; rerunning a stage reuses FASTQs that already pass checksum and gzip
-validation.
+array task; rerunning a stage reuses FASTQs that already match their deposited
+MD5 checksum. The workflow does not additionally run `gzip -t`: both operations
+read the complete archive, and the authoritative deposited MD5 is sufficient.
+
+### Experimental optimized filtering
+
+The published three-program filtering route remains the reference workflow and
+is selected with `filter`. An experimental optimized implementation preserves
+the filtering order, thresholds, and legacy PSI arithmetic while eliminating
+repeated interval fetches, temporary CSV files, quadratic list deletion, and
+unused failure BAMs. It writes to `optimized/<run>/`, leaving reference outputs
+untouched:
+
+```bash
+bash scripts/hpc/submit_level3.sh filter-optimized
+```
+
+The same program can run locally when Python and pysam are available:
+
+```bash
+bash scripts/local/run_filter_and_psi_optimized.sh \
+  --input-bam /path/to/input.bam \
+  --beds-dir /path/to/project/references/beds \
+  --output-dir /path/to/optimized-output
+```
+
+Before treating optimized products as interchangeable, compare them with the
+legacy final BAMs and PSI tables using
+`scripts/optimized/compare_implementations.py`. This comparison uses complete
+SAM alignment records, including multiplicity, rather than filenames or BAM
+file checksums. The initial non-empty local equivalence test and its limitations
+are recorded in [`docs/optimized_filter_validation.md`](docs/optimized_filter_validation.md).
 
 After filtering is complete, the same wrapper can submit the optional compact
 pileup-input stages with consistent site settings and absolute log paths:

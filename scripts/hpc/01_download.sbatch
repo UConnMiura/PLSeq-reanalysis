@@ -23,7 +23,6 @@ esac
 
 if [[ -s "$target" ]]; then
     printf '%s  %s\n' "$md5" "$target" | md5sum -c -
-    gzip -t "$target"
     echo "Already downloaded and validated: $target"
     exit 0
 fi
@@ -38,4 +37,3 @@ if [[ -n "${bytes:-}" ]]; then
     }
 fi
 mv "$target.part" "$target"
-gzip -t "$target"
