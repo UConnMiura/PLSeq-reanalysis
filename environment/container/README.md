@@ -31,6 +31,22 @@ pyGenomeTracks, R with ggplot2/dplyr/tidyr, Pandoc, and Poppler. It does not
 replace `pullalong-core.sif`; alignment and PSI reconstruction remain tied to
 the archived historical image described above.
 
+The validated AMD64 image is archived in Zenodo v4:
+
+- Record: <https://doi.org/10.5281/zenodo.23835296>
+- File: `plseq-plotting.sif`
+- SHA-256: `6b7ad4435e3e7e1b62bf63c921f4fb6b0f2adfac101bf12a4bf1edb5264aeb4b`
+
+Download and verify it with:
+
+```bash
+curl -L 'https://zenodo.org/records/23835296/files/plseq-plotting.sif?download=1' \
+  -o plseq-plotting.sif
+curl -L 'https://zenodo.org/records/23835296/files/plseq-plotting.sif.sha256?download=1' \
+  -o plseq-plotting.sif.sha256
+sha256sum -c plseq-plotting.sif.sha256
+```
+
 Build the plotting image on an AMD64 Linux system with Apptainer:
 
 ```bash
@@ -50,7 +66,8 @@ bash tests/test_plotting_container.sh \
 
 The image binary is intentionally excluded by `.gitignore`; Git tracks the
 definition and tests, not the 1.2-GB SIF. The validated Mantis build has the
-following SHA-256 checksum, also recorded in `plseq-plotting.sif.sha256`:
+following SHA-256 checksum, also recorded in `plseq-plotting.sif.sha256` and
+the Zenodo release:
 
 ```text
 6b7ad4435e3e7e1b62bf63c921f4fb6b0f2adfac101bf12a4bf1edb5264aeb4b

@@ -139,7 +139,9 @@ bash tests/test_plotting_container.sh \
 ```
 
 This plotting image is separate from the historical `pullalong-core.sif` used
-for Level 3 alignment and filtering.
+for Level 3 alignment and filtering. The validated plotting image is archived
+in Zenodo v4 at
+[doi:10.5281/zenodo.23835296](https://doi.org/10.5281/zenodo.23835296).
 
 ### Level 3: Reconstruct the analysis from FASTQ files
 

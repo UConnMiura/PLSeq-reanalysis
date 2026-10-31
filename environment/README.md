@@ -34,4 +34,6 @@ Figure generation can alternatively use the rebuildable
 `environment/container/plseq-plotting.def` image. This newer image supplies
 Matplotlib, pyGenomeTracks, R plotting packages, Pandoc, and Poppler while
 keeping the historical alignment/filtering container unchanged. Build and
-test instructions are in `environment/container/README.md`.
+test instructions are in `environment/container/README.md`. The validated
+binary is archived in Zenodo v4 at
+<https://doi.org/10.5281/zenodo.23835296>.
